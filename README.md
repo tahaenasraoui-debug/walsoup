@@ -8,9 +8,9 @@
 
 ## <img alt="about me" src="https://raw.githubusercontent.com/walsoup/walsoup/main/assets/sprite.svg#h-about" width="640" height="56">
 
-i build weird software to kill time and occasionally it turns into something useful. mostly android apps and low-level tinkering, and i'd rather it work without internet.
+i build weird software to kill time and occasionally it turns into something useful.
 
-outside of code: i take photos of cats, collect random cat facts, and doodle when i'm bored. also soup. mostly soup. *(yes, souphater.page. no, i don't hate soup. old handle joke.)*
+outside of code: i take photos of cats, collect random cat facts, and doodle when i'm bored. also soup. I love making soup. *(yes, souphater.page. no, i don't hate soup.)*
 
 ## <img alt="what i'm building" src="https://raw.githubusercontent.com/walsoup/walsoup/main/assets/sprite.svg#h-building" width="640" height="56">
 
