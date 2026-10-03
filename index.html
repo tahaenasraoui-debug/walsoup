@@ -910,7 +910,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 9999px;
       background: rgba(18, 18, 18, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.16);
@@ -922,18 +922,140 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      opacity: 0.02;
+      opacity: 0.35;
       pointer-events: auto;
       user-select: none;
-      cursor: default;
-      transition: opacity 0.35s ease, transform 0.25s ease;
+      cursor: pointer;
+      transition: opacity 0.35s ease, transform 0.25s ease, background 0.2s ease, border-color 0.2s ease;
       white-space: nowrap;
     }
 
     .wal-bottom-info:hover,
+    .wal-bottom-info:focus-visible,
     .wal-bottom-info.is-hovered {
       opacity: 0.95;
       transform: translateY(-2px);
+      background: rgba(30, 30, 30, 0.95);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* --------------------------------------------------------------------------
+      COPYRIGHT MODAL
+      --------------------------------------------------------------------------
+      */
+    .copyright-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    .copyright-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .copyright-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .copyright-modal-dialog {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      width: 100%;
+      background: rgba(22, 22, 26, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: #e5e7eb;
+      padding: 24px;
+      transform: translateY(12px) scale(0.96);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .copyright-modal.active .copyright-modal-dialog {
+      transform: translateY(0) scale(1);
+    }
+    .copyright-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .copyright-modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .copyright-modal-close {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .copyright-modal-close:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .copyright-modal-body h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fb923c;
+      margin: 0 0 6px 0;
+    }
+    .copyright-modal-body p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #d1d5db;
+      margin: 0 0 8px 0;
+    }
+    .copyright-modal-body a {
+      color: #fb923c;
+      text-decoration: underline;
+    }
+    .credit-block .track-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .credit-block .track-list li {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 5px 8px;
+      border-radius: 6px;
+    }
+    .credit-block .licensing-note {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      font-style: italic;
+      margin-top: 6px;
+    }
+    .credit-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 14px 0;
     }
 
     /* --------------------------------------------------------------------------
@@ -2194,7 +2316,42 @@
     <button id="audio-toggle-btn" class="audio-toggle-btn" aria-label="Mute background audio" title="Mute background audio">🔊</button>
   </div>
 
-  <div class="wal-bottom-info" id="wal-bottom-info" aria-hidden="true">© 2026 Walid</div>
+  <button class="wal-bottom-info" id="wal-bottom-info" aria-label="Credits & Copyright" title="Credits & Copyright">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    </svg>
+    <span class="wal-info-text">Credits</span>
+  </button>
+
+  <div id="copyright-modal" class="copyright-modal" role="dialog" aria-modal="true" aria-labelledby="copyright-modal-title" hidden>
+    <div class="copyright-modal-backdrop" id="copyright-modal-backdrop"></div>
+    <div class="copyright-modal-dialog">
+      <div class="copyright-modal-header">
+        <h3 id="copyright-modal-title" class="copyright-modal-title">Credits & Copyright</h3>
+        <button id="copyright-modal-close" class="copyright-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="copyright-modal-body">
+        <div class="credit-block">
+          <h4>🎵 Music Credits</h4>
+          <p>Background music composed by <strong>Toby Fox</strong> from <em>DELTARUNE</em> and <em>UNDERTALE</em>.</p>
+          <ul class="track-list">
+            <li><strong>Home:</strong> <em>My Castle Town</em></li>
+            <li><strong>Bio:</strong> <em>After the Rain</em></li>
+            <li><strong>Cats:</strong> <em>Catswing</em></li>
+            <li><strong>Photos:</strong> <em>Flower Cafe</em></li>
+          </ul>
+          <p class="licensing-note">Soundtrack published &amp; licensed via <strong>Materia Collective LLC</strong> / <strong>Materia Music Inc.</strong> All rights reserved to their respective owners.</p>
+        </div>
+        <div class="credit-divider"></div>
+        <div class="credit-block">
+          <h4>💻 Website &amp; Design</h4>
+          <p>&copy; 2026 <strong>Walid Elonk</strong> (<a href="https://github.com/walsoup" target="_blank" rel="noopener noreferrer">@walsoup</a>). Built with love and soup.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="relative min-h-screen flex items-center justify-center p-4 z-10">
     <div class="max-w-6xl w-full flex flex-col md:flex-row md:items-stretch md:space-x-8">
@@ -2373,15 +2530,22 @@
       const Jukebox = (() => {
 
         // ─── Config ────────────────────────────────────────────────────────────────
-        const THEME_MAP   = { default: 'expressive', dark: 'space', banana: 'pink' };
         const SECTION_MAP = { intro: 'home', bio: 'bio', cat: 'cats', photos: 'photos' };
-        const syncChannelName = 'wal-jukebox-sync-v2';
-        const syncStorageKey  = 'wal-jukebox-sync-state-v2';
+        const syncChannelName = 'wal-jukebox-sync-v3';
+        const syncStorageKey  = 'wal-jukebox-sync-state-v3';
         const BASE        = 'audio/tracks/';
 
-        const url = (theme, tab) => {
-            const safeTab = (tab === 'cat' || tab === 'cats') ? 'cats' : tab;
-            return `${BASE}itswal_${theme}_${safeTab}.mp3?v=5`;
+        const TRACK_DEFS = {
+          home:   { file: 'home.ogg',   title: 'Toby Fox – My Castle Town' },
+          bio:    { file: 'bio.ogg',    title: 'Toby Fox – After the Rain' },
+          cats:   { file: 'cats.ogg',   title: 'Toby Fox – Catswing' },
+          photos: { file: 'photos.ogg', title: 'Toby Fox – Flower Cafe' }
+        };
+
+        const url = (tab) => {
+            const safeTab = (tab === 'cat' || tab === 'cats') ? 'cats' : (tab || 'home');
+            const def = TRACK_DEFS[safeTab] || TRACK_DEFS.home;
+            return `${BASE}${def.file}?v=1`;
         };
 
         // ─── Web Audio Slot ────────────────────────────────────────────────────────
@@ -2399,7 +2563,6 @@
             this.source.connect(this.gain);
             this.gain.connect(ctx.destination);
             
-            this.theme = null;
             this.tab = null;
           }
         }
@@ -2411,7 +2574,6 @@
             this.slots = null;
             this.activeIdx = 0;
             
-            this._theme = 'expressive';
             this._tab = 'home';
             this._isMuted = false;
             this._ready = false;
@@ -2450,23 +2612,22 @@
               
               if (!this._ready) {
                 this._ready = true;
-                const p = this._pending || { theme: this._theme, tab: this._tab, targetTimeSec: null };
+                const p = this._pending || { tab: this._tab };
                 this._pending = null;
-                this._request(p.theme, p.tab, p.targetTimeSec);
+                this._request(p.tab);
               }
             };
             document.addEventListener('click', unlock, true);
             document.addEventListener('touchstart', unlock, true);
           }
 
-          onThemeChange(uiTheme) {
-            const next = THEME_MAP[uiTheme] ?? 'expressive';
-            this._request(next, this._tab);
+          onThemeChange() {
+            // Section-based soundtrack; theme does not alter track selection
           }
 
           onSectionChange(sectionKey) {
             const next = SECTION_MAP[sectionKey] ?? 'home';
-            this._request(this._theme, next);
+            this._request(next);
           }
 
           toggleMuted() {
@@ -2508,75 +2669,55 @@
             });
           }
 
-          _request(nextTheme, nextTab, targetTimeSec = null) {
+          _request(nextTab) {
             if (!this._ready) {
-                this._pending = { theme: nextTheme, tab: nextTab, targetTimeSec };
+                this._pending = { tab: nextTab };
                 return;
             }
             
             const activeSlot = this.slots ? this.slots[this.activeIdx] : null;
-            const isInitialized = activeSlot && activeSlot.theme !== null;
-            if (nextTheme === this._theme && nextTab === this._tab && isInitialized) {
-                if (targetTimeSec !== null && activeSlot) {
-                    if (Math.abs(activeSlot.el.currentTime - targetTimeSec) > 0.5) {
-                        activeSlot.el.currentTime = targetTimeSec;
-                    }
-                }
+            const isInitialized = activeSlot && activeSlot.tab !== null;
+            if (nextTab === this._tab && isInitialized) {
                 return;
             }
             
             if (this._fadePromise) {
-                this._pending = { theme: nextTheme, tab: nextTab, targetTimeSec };
+                this._pending = { tab: nextTab };
                 return;
             }
             
-            this._fadePromise = this._crossfade(nextTheme, nextTab, targetTimeSec)
+            this._fadePromise = this._crossfade(nextTab)
                 .catch(e => console.error('[Jukebox]', e))
                 .finally(() => {
                     this._fadePromise = null;
                     if (this._pending) {
                         const p = this._pending;
                         this._pending = null;
-                        this._request(p.theme, p.tab, p.targetTimeSec);
+                        this._request(p.tab);
                     }
                 });
           }
 
-          async _crossfade(nextTheme, nextTab, targetTimeSec) {
+          async _crossfade(nextTab) {
               const activeSlot = this.slots[this.activeIdx];
               const idleIdx = 1 - this.activeIdx;
               const idleSlot = this.slots[idleIdx];
               
-              const trackUrl = url(nextTheme, nextTab);
+              const trackUrl = url(nextTab);
               if (idleSlot.el.getAttribute('src') !== trackUrl) {
                   idleSlot.el.src = trackUrl;
                   idleSlot.el.preload = 'auto';
               }
               
-              const armStart = performance.now();
               await this._arm(idleSlot.el);
-              const armDurationSec = (performance.now() - armStart) / 1000;
-              
-              let syncTime;
-              if (targetTimeSec !== null) {
-                  syncTime = targetTimeSec + armDurationSec;
-              } else {
-                  syncTime = activeSlot.el.currentTime || 0;
-              }
-              
-              if (idleSlot.el.duration && syncTime > idleSlot.el.duration) {
-                  syncTime = syncTime % idleSlot.el.duration;
-              }
-              idleSlot.el.currentTime = syncTime;
+              idleSlot.el.currentTime = 0;
               
               if (this.ctx.state === 'suspended') {
                   await this.ctx.resume().catch(()=>{});
               }
               
               if (this._isMuted) {
-                  this._theme = nextTheme;
                   this._tab = nextTab;
-                  idleSlot.theme = nextTheme;
                   idleSlot.tab = nextTab;
                   this.activeIdx = idleIdx;
                   
@@ -2594,13 +2735,11 @@
                   return;
               }
               
-              this._theme = nextTheme;
               this._tab = nextTab;
-              idleSlot.theme = nextTheme;
               idleSlot.tab = nextTab;
               this.activeIdx = idleIdx;
               
-              const fadeDuration = (nextTheme === 'space' || activeSlot.theme === 'space') ? 1.8 : 0.9;
+              const fadeDuration = 0.8;
               const now = this.ctx.currentTime;
               
               idleSlot.gain.gain.cancelScheduledValues(now);
@@ -2642,14 +2781,11 @@
 
           _publishSyncState() {
             if (this._isApplyingRemote || !this._ready || !this.slots) return;
-            const activeSlot = this.slots[this.activeIdx];
             const payload = {
               source: this._tabSessionId,
               emittedAt: Date.now(),
-              theme: this._theme,
               tab: this._tab,
-              muted: this._isMuted,
-              positionSec: activeSlot.el.currentTime || 0
+              muted: this._isMuted
             };
             try { localStorage.setItem(syncStorageKey, JSON.stringify(payload)); } catch {}
             try { this._syncChannel?.postMessage(payload); } catch {}
@@ -2658,19 +2794,13 @@
           _applyRemoteState(payload) {
             if (!payload || payload.source === this._tabSessionId) return;
             
-            const emittedAt = Number(payload.emittedAt);
-            const rawElapsed = (Date.now() - emittedAt) / 1000;
-            const elapsed = Math.min(10, Math.max(0, rawElapsed));
-            const targetTimeSec = Number(payload.positionSec) + elapsed;
-
             this._isApplyingRemote = true;
             try {
                 if (typeof payload.muted === 'boolean' && payload.muted !== this._isMuted) {
                     this.setMuted(payload.muted);
                 }
-                const nextTheme = payload.theme || this._theme;
                 const nextTab = payload.tab || this._tab;
-                this._request(nextTheme, nextTab, targetTimeSec);
+                this._request(nextTab);
             } finally {
                 this._isApplyingRemote = false;
             }
@@ -2805,12 +2935,16 @@
       function updateAudioTrackLabel() {
         const label = document.getElementById('audio-track-label');
         if (!label) return;
-        const themeNames = { default: 'Expressive', dark: 'Space', banana: 'Banana' };
-        const sectionNames = { intro: 'Home', bio: 'Bio', cat: 'Cats', photos: 'Photos' };
-        const activeTheme = themeNames[currentTheme] || 'Ambient';
+        const trackTitles = {
+          intro: 'Toby Fox – My Castle Town',
+          home: 'Toby Fox – My Castle Town',
+          bio: 'Toby Fox – After the Rain',
+          cat: 'Toby Fox – Catswing',
+          cats: 'Toby Fox – Catswing',
+          photos: 'Toby Fox – Flower Cafe'
+        };
         const hash = window.location.hash ? window.location.hash.substring(1) : 'intro';
-        const activeSection = sectionNames[hash] || 'Home';
-        const newTrackText = `${activeTheme} • ${activeSection}`;
+        const newTrackText = trackTitles[hash] || 'Toby Fox – My Castle Town';
 
         const trackChanged = (lastTrackLabel !== '' && lastTrackLabel !== newTrackText);
         lastTrackLabel = newTrackText;
@@ -4290,8 +4424,31 @@ SQUIGGLE INTERACTIONS (Cycle Themes)
         }
       }
 
-      // Bottom-left watermark reveal on corner proximity
+      // Bottom-left info button & copyright modal
       const bottomInfo = document.getElementById('wal-bottom-info');
+      const copyrightModal = document.getElementById('copyright-modal');
+      const copyrightClose = document.getElementById('copyright-modal-close');
+      const copyrightBackdrop = document.getElementById('copyright-modal-backdrop');
+
+      function openCopyrightModal() {
+        if (!copyrightModal) return;
+        copyrightModal.removeAttribute('hidden');
+        void copyrightModal.offsetWidth;
+        copyrightModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCopyrightModal() {
+        if (!copyrightModal) return;
+        copyrightModal.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          if (!copyrightModal.classList.contains('active')) {
+            copyrightModal.setAttribute('hidden', '');
+          }
+        }, 250);
+      }
+
       if (bottomInfo) {
         window.addEventListener('mousemove', (e) => {
           const distFromLeft = e.clientX;
@@ -4303,10 +4460,19 @@ SQUIGGLE INTERACTIONS (Cycle Themes)
           }
         }, { passive: true });
 
-        bottomInfo.addEventListener('click', () => {
-          bottomInfo.classList.toggle('is-hovered');
+        bottomInfo.addEventListener('click', (e) => {
+          e.preventDefault();
+          openCopyrightModal();
         });
       }
+
+      if (copyrightClose) copyrightClose.addEventListener('click', closeCopyrightModal);
+      if (copyrightBackdrop) copyrightBackdrop.addEventListener('click', closeCopyrightModal);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && copyrightModal && copyrightModal.classList.contains('active')) {
+          closeCopyrightModal();
+        }
+      });
 
       restoreCustomDoodles();
       updateAudioTrackLabel();
