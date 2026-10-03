@@ -8,20 +8,16 @@
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes ag-pulse {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2.5px); }
-    }
-    .ag-head { animation: ag-pulse 2.4s ease-in-out infinite; }
-    .ag-base { animation: ag-pulse 3s ease-in-out infinite 0.5s; }
-    @keyframes wip-pulse {
-      0%, 100% { opacity: 0.90; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.03); }
+    @keyframes ag-pulse-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+    @keyframes ag-pulse-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2px); } }
+    .ag-head { animation: ag-pulse-1 2.4s ease-in-out infinite; }
+    .ag-base { animation: ag-pulse-2 3s ease-in-out infinite 0.5s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: wip-pulse 2.2s ease-in-out infinite;
+      animation: badge-pulse 2.2s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .ag-head, .ag-base, .badge-pill { animation: none !important; }

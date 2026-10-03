@@ -4,6 +4,7 @@ generate_assets.py - Generates standalone animated SVG assets for walsoup GitHub
 """
 
 import os
+import re
 import xml.etree.ElementTree as ET
 
 ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets"))
@@ -27,19 +28,21 @@ def create_pill_website():
   <style>
     .w { font: 600 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
     .m { mix-blend-mode: multiply; }
-    @keyframes pill-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-1.5px); }
+    @keyframes pill-nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(1.5px); }
     }
     .icon {
-      animation: pill-float 3s ease-in-out infinite alternate;
+      animation: pill-nudge 3s ease-in-out infinite alternate;
     }
     @media (prefers-reduced-motion: reduce) {
       .icon { animation: none !important; }
     }
   </style>
   <g style="isolation:isolate">
-    <circle class="m icon" cx="22" cy="22" r="22" fill="#FFB627"/>
+    <g class="icon">
+      <circle class="m" cx="22" cy="22" r="22" fill="#FFB627"/>
+    </g>
     <rect class="m" x="16" y="0" width="226" height="44" rx="22" fill="#F0542D"/>
   </g>
   <text class="w" x="60" y="29">souphater.page</text>
@@ -51,8 +54,8 @@ def create_pill_email():
     .w { font: 600 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
     .m { mix-blend-mode: multiply; }
     @keyframes pill-arrow {
-      0%, 100% { transform: scale(1.294) translateX(0); }
-      50% { transform: scale(1.294) translateX(1px); }
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
     }
     .icon {
       animation: pill-arrow 2.8s ease-in-out infinite alternate;
@@ -62,7 +65,9 @@ def create_pill_email():
     }
   </style>
   <g style="isolation:isolate">
-    <path class="m icon" transform="scale(1.294)" d="M5 6 L30 17 L5 28 Z" fill="#FFB627" stroke="#FFB627" stroke-width="6" stroke-linejoin="round"/>
+    <g class="icon">
+      <path class="m" transform="scale(1.294)" d="M5 6 L30 17 L5 28 Z" fill="#FFB627" stroke="#FFB627" stroke-width="6" stroke-linejoin="round"/>
+    </g>
     <rect class="m" x="16" y="0" width="294" height="44" rx="22" fill="#E64980"/>
   </g>
   <text class="w" x="60" y="29">walidelonk@gmail.com</text>
@@ -74,12 +79,10 @@ def create_pill_fsr():
     .w { font: 600 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
     .m { mix-blend-mode: multiply; }
     @keyframes pill-diamond {
-      0%, 100% { transform: rotate(45deg) scale(1); }
-      50% { transform: rotate(45deg) scale(1.06); }
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(1.5px); }
     }
     .icon {
-      transform-box: fill-box;
-      transform-origin: center;
       animation: pill-diamond 3.2s ease-in-out infinite alternate;
     }
     @media (prefers-reduced-motion: reduce) {
@@ -87,7 +90,9 @@ def create_pill_fsr():
     }
   </style>
   <g style="isolation:isolate">
-    <rect class="m icon" x="6.5" y="6.5" width="31" height="31" rx="6.5" transform="rotate(45 22 22)" fill="#FFB627"/>
+    <g class="icon">
+      <rect class="m" x="6.5" y="6.5" width="31" height="31" rx="6.5" transform="rotate(45 22 22)" fill="#FFB627"/>
+    </g>
     <rect class="m" x="16" y="0" width="248" height="44" rx="22" fill="#E07B00"/>
   </g>
   <text class="w" x="60" y="29">cs student · fsr</text>
@@ -145,14 +150,12 @@ def create_card_ditto():
     .bar-1 { animation: eq-1 2.2s ease-in-out infinite; }
     .bar-2 { animation: eq-2 1.8s ease-in-out infinite; }
     .bar-3 { animation: eq-3 2.5s ease-in-out infinite; }
-    @keyframes badge-glow {
-      0%, 100% { opacity: 0.94; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.025); }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: badge-glow 3s ease-in-out infinite;
+      animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .bar-1, .bar-2, .bar-3, .badge-pill { animation: none !important; }
@@ -182,29 +185,18 @@ def create_card_gemwallet():
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes gw-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2px); }
-    }
-    @keyframes gw-gem {
-      0%, 100% { transform: rotate(45deg); }
-      50% { transform: rotate(48deg) translateY(-1.5px); }
-    }
-    .gw-1 { animation: gw-float 3.4s ease-in-out infinite; }
-    .gw-2 {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: gw-gem 4s ease-in-out infinite;
-    }
-    .gw-3 { animation: gw-float 3.4s ease-in-out infinite 0.6s; }
-    @keyframes wip-pulse {
-      0%, 100% { opacity: 0.90; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.03); }
+    @keyframes gw-float-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    @keyframes gw-float-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2px); } }
+    @keyframes gw-float-3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+    .gw-1 { animation: gw-float-1 3.4s ease-in-out infinite; }
+    .gw-2 { animation: gw-float-2 3.4s ease-in-out infinite 0.6s; }
+    .gw-3 { animation: gw-float-3 3.4s ease-in-out infinite 1.2s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: wip-pulse 2.2s ease-in-out infinite;
+      animation: badge-pulse 2.2s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .gw-1, .gw-2, .gw-3, .badge-pill { animation: none !important; }
@@ -213,7 +205,7 @@ def create_card_gemwallet():
   <rect class="bg" width="640" height="84" rx="18"/>
   <g transform="translate(22 14.0) scale(0.875)" style="isolation:isolate">
     <circle class="m gw-1" cx="26" cy="32" r="22" fill="#FFB627"/>
-    <rect class="m gw-2" x="22" y="12" width="36" height="36" rx="10" transform="rotate(45 40 30)" fill="#F0542D"/>
+    <g class="gw-2"><rect class="m" x="22" y="12" width="36" height="36" rx="10" transform="rotate(45 40 30)" fill="#F0542D"/></g>
     <path class="m gw-3" d="M10 54 A22 22 0 0 1 54 54 Z" fill="#E64980"/>
   </g>
   <text class="t" x="96" y="51.1">gemwallet</text>
@@ -234,20 +226,18 @@ def create_card_fichegen():
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes sheet-sway-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
-    @keyframes sheet-sway-2 { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(10deg) translateY(-1px); } }
-    @keyframes sheet-sway-3 { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(-4deg) translateY(1px); } }
-    .sheet-1 { animation: sheet-sway-1 3.5s ease-in-out infinite; }
-    .sheet-2 { transform-box: fill-box; transform-origin: center; animation: sheet-sway-2 3.5s ease-in-out infinite 0.3s; }
-    .sheet-3 { transform-box: fill-box; transform-origin: center; animation: sheet-sway-3 3.5s ease-in-out infinite 0.6s; }
-    @keyframes badge-glow {
-      0%, 100% { opacity: 0.94; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.025); }
+    @keyframes sheet-float-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    @keyframes sheet-float-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(1.5px); } }
+    @keyframes sheet-float-3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+    .sheet-1 { animation: sheet-float-1 3.5s ease-in-out infinite; }
+    .sheet-2 { animation: sheet-float-2 3.5s ease-in-out infinite 0.5s; }
+    .sheet-3 { animation: sheet-float-3 3.5s ease-in-out infinite 1s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: badge-glow 3s ease-in-out infinite;
+      animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .sheet-1, .sheet-2, .sheet-3, .badge-pill { animation: none !important; }
@@ -256,8 +246,8 @@ def create_card_fichegen():
   <rect class="bg" width="640" height="84" rx="18"/>
   <g transform="translate(22 14.0) scale(0.875)" style="isolation:isolate">
     <rect class="m sheet-1" x="4" y="8" width="36" height="44" rx="8" fill="#FFB627"/>
-    <rect class="m sheet-2" x="16" y="12" width="36" height="44" rx="8" transform="rotate(8 34 34)" fill="#F0542D"/>
-    <rect class="m sheet-3" x="26" y="6" width="30" height="40" rx="8" transform="rotate(-6 41 26)" fill="#E64980"/>
+    <g class="sheet-2"><rect class="m" x="16" y="12" width="36" height="44" rx="8" transform="rotate(8 34 34)" fill="#F0542D"/></g>
+    <g class="sheet-3"><rect class="m" x="26" y="6" width="30" height="40" rx="8" transform="rotate(-6 41 26)" fill="#E64980"/></g>
   </g>
   <text class="t" x="96" y="51.1">fichegen (profstudio)</text>
   <g class="badge-pill">
@@ -277,21 +267,19 @@ def create_card_bitnet():
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes mesh-ping {
-      0%, 100% { transform: scale(1); opacity: 0.85; }
-      50% { transform: scale(1.12); opacity: 1; }
+    @keyframes mesh-pulse {
+      0%, 100% { opacity: 0.8; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-2px); }
     }
-    .node-1 { transform-box: fill-box; transform-origin: center; animation: mesh-ping 2.1s ease-in-out infinite; }
-    .node-2 { transform-box: fill-box; transform-origin: center; animation: mesh-ping 2.1s ease-in-out infinite 0.7s; }
-    .node-3 { transform-box: fill-box; transform-origin: center; animation: mesh-ping 2.1s ease-in-out infinite 1.4s; }
-    @keyframes wip-pulse {
-      0%, 100% { opacity: 0.90; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.03); }
+    .node-1 { animation: mesh-pulse 2.1s ease-in-out infinite; }
+    .node-2 { animation: mesh-pulse 2.1s ease-in-out infinite 0.7s; }
+    .node-3 { animation: mesh-pulse 2.1s ease-in-out infinite 1.4s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: wip-pulse 2.2s ease-in-out infinite;
+      animation: badge-pulse 2.2s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .node-1, .node-2, .node-3, .badge-pill { animation: none !important; }
@@ -321,20 +309,16 @@ def create_card_agent_base():
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes ag-pulse {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2.5px); }
-    }
-    .ag-head { animation: ag-pulse 2.4s ease-in-out infinite; }
-    .ag-base { animation: ag-pulse 3s ease-in-out infinite 0.5s; }
-    @keyframes wip-pulse {
-      0%, 100% { opacity: 0.90; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.03); }
+    @keyframes ag-pulse-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+    @keyframes ag-pulse-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2px); } }
+    .ag-head { animation: ag-pulse-1 2.4s ease-in-out infinite; }
+    .ag-base { animation: ag-pulse-2 3s ease-in-out infinite 0.5s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: wip-pulse 2.2s ease-in-out infinite;
+      animation: badge-pulse 2.2s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .ag-head, .ag-base, .badge-pill { animation: none !important; }
@@ -364,32 +348,27 @@ def create_card_tether_compass():
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes cp-sway {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
+    @keyframes arc-sway-1 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-1.5px); }
     }
-    @keyframes cp-beacon {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.15); opacity: 1; }
+    @keyframes arc-sway-2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(1.5px); }
     }
-    .cp-arc1, .cp-arc2 {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: cp-sway 4s ease-in-out infinite alternate;
+    @keyframes beacon-pulse {
+      0%, 100% { opacity: 0.75; }
+      50% { opacity: 1; }
     }
-    .cp-dot {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: cp-beacon 2.2s ease-in-out infinite;
-    }
-    @keyframes badge-glow {
-      0%, 100% { opacity: 0.94; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.025); }
+    .cp-arc1 { animation: arc-sway-1 3.5s ease-in-out infinite; }
+    .cp-arc2 { animation: arc-sway-2 3.5s ease-in-out infinite 0.6s; }
+    .cp-dot  { animation: beacon-pulse 2.2s ease-in-out infinite; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: badge-glow 3s ease-in-out infinite;
+      animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .cp-arc1, .cp-arc2, .cp-dot, .badge-pill { animation: none !important; }
@@ -398,7 +377,7 @@ def create_card_tether_compass():
   <rect class="bg" width="640" height="64" rx="16"/>
   <g transform="translate(20 10.88) scale(0.66)" style="isolation:isolate">
     <path class="m cp-arc1" d="M30 10 A22 22 0 0 0 30 54 Z" fill="#FFB627"/>
-    <path class="m cp-arc2" d="M22 10 A22 22 0 0 1 22 54 Z" transform="translate(14 0)" fill="#F0542D"/>
+    <g class="cp-arc2"><path class="m" d="M22 10 A22 22 0 0 1 22 54 Z" transform="translate(14 0)" fill="#F0542D"/></g>
     <circle class="m cp-dot" cx="32" cy="32" r="9" fill="#E64980"/>
   </g>
   <text class="t" x="78" y="39.7">tether compass</text>
@@ -419,21 +398,18 @@ def create_card_direct_moutamadris():
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes dm-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2px); }
-    }
-    .dm-1 { animation: dm-float 3.4s ease-in-out infinite; }
-    .dm-2 { animation: dm-float 3.4s ease-in-out infinite 0.6s; }
-    .dm-3 { animation: dm-float 3.4s ease-in-out infinite 1.2s; }
-    @keyframes badge-glow {
-      0%, 100% { opacity: 0.94; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.025); }
+    @keyframes dm-float-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    @keyframes dm-float-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2px); } }
+    @keyframes dm-float-3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+    .dm-1 { animation: dm-float-1 3.4s ease-in-out infinite; }
+    .dm-2 { animation: dm-float-2 3.4s ease-in-out infinite 0.6s; }
+    .dm-3 { animation: dm-float-3 3.4s ease-in-out infinite 1.2s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: badge-glow 3s ease-in-out infinite;
+      animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .dm-1, .dm-2, .dm-3, .badge-pill { animation: none !important; }
@@ -543,21 +519,25 @@ def create_footer():
     }
     @keyframes float-l { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
     @keyframes float-r { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
-    .mark-left  { animation: float-l 4s ease-in-out infinite; }
-    .mark-right { animation: float-r 4s ease-in-out infinite; }
+    .mark-l { animation: float-l 4s ease-in-out infinite; }
+    .mark-r { animation: float-r 4s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) {
-      .mark-left, .mark-right { animation: none !important; }
+      .mark-l, .mark-r { animation: none !important; }
     }
   </style>
-  <g class="mark-left" transform="translate(14 12.6) scale(0.8)" style="isolation:isolate">
-    <circle class="m" cx="20" cy="28" r="14" fill="#FFB627"/>
-    <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#F0542D"/>
-    <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#E64980"/>
+  <g transform="translate(14 12.6) scale(0.8)" style="isolation:isolate">
+    <g class="mark-l">
+      <circle class="m" cx="20" cy="28" r="14" fill="#FFB627"/>
+      <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#F0542D"/>
+      <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#E64980"/>
+    </g>
   </g>
-  <g class="mark-right" transform="translate(571 12.6) scale(0.8)" style="isolation:isolate">
-    <circle class="m" cx="20" cy="28" r="14" fill="#E64980"/>
-    <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#FFB627"/>
-    <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#F0542D"/>
+  <g transform="translate(571 12.6) scale(0.8)" style="isolation:isolate">
+    <g class="mark-r">
+      <circle class="m" cx="20" cy="28" r="14" fill="#E64980"/>
+      <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#FFB627"/>
+      <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#F0542D"/>
+    </g>
   </g>
   <text class="t" x="320" y="42" text-anchor="middle">soup is just the best driving force :3</text>
 </svg>'''
@@ -626,14 +606,40 @@ files = {
     "header.svg": create_header()
 }
 
+def validate_svg(name, content):
+    # 1. XML parsing
+    root = ET.fromstring(content)
+    assert root.tag.endswith("svg"), f"{name}: root tag is not svg"
+    assert "viewBox" in root.attrib, f"{name}: missing viewBox"
+    assert "width" in root.attrib, f"{name}: missing width"
+    assert "height" in root.attrib, f"{name}: missing height"
+
+    # 2. No transform-box: fill-box (flaky / broken in SVG img contexts across Safari/WebKit)
+    assert "transform-box" not in content, f"{name}: contains transform-box which breaks in SVG img contexts"
+
+    # 3. Check for animated transform collision with presentation attributes
+    # If a class is animated with transform, verify that elements with that class don't have static transform attributes
+    animated_classes = re.findall(r'\.([a-zA-Z0-9_-]+)\s*\{[^}]*animation:[^;]+', content)
+    for cls in animated_classes:
+        # Check if any element has class="... cls ..." AND transform="..."
+        pattern = rf'<[^>]+class="[^"]*\b{cls}\b[^"]*"[^>]+transform="[^"]+"'
+        assert not re.search(pattern, content), f"{name}: element with class '{cls}' has both CSS transform animation and static transform attribute"
+
+    # 4. Reduced motion fallback
+    if "@keyframes" in content:
+        assert "@media (prefers-reduced-motion: reduce)" in content, f"{name}: missing reduced motion fallback"
+
+    # 5. Dark mode support for SVGs with text or backgrounds
+    if ".bg" in content or ".t" in content or ".name" in content:
+        assert "@media (prefers-color-scheme: dark)" in content, f"{name}: missing dark mode styling"
+
 if __name__ == "__main__":
     for fname, content in files.items():
         fpath = os.path.join(ASSETS_DIR, fname)
         with open(fpath, "w", encoding="utf-8") as f:
             f.write(content)
-        # Validate XML
         try:
-            ET.fromstring(content)
+            validate_svg(fname, content)
             print(f"[OK] {fname}")
         except Exception as e:
             print(f"[FAIL] {fname}: {e}")

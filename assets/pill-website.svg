@@ -2,19 +2,21 @@
   <style>
     .w { font: 600 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
     .m { mix-blend-mode: multiply; }
-    @keyframes pill-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-1.5px); }
+    @keyframes pill-nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(1.5px); }
     }
     .icon {
-      animation: pill-float 3s ease-in-out infinite alternate;
+      animation: pill-nudge 3s ease-in-out infinite alternate;
     }
     @media (prefers-reduced-motion: reduce) {
       .icon { animation: none !important; }
     }
   </style>
   <g style="isolation:isolate">
-    <circle class="m icon" cx="22" cy="22" r="22" fill="#FFB627"/>
+    <g class="icon">
+      <circle class="m" cx="22" cy="22" r="22" fill="#FFB627"/>
+    </g>
     <rect class="m" x="16" y="0" width="226" height="44" rx="22" fill="#F0542D"/>
   </g>
   <text class="w" x="60" y="29">souphater.page</text>

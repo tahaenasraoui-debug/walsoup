@@ -8,21 +8,19 @@
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
     }
-    @keyframes mesh-ping {
-      0%, 100% { transform: scale(1); opacity: 0.85; }
-      50% { transform: scale(1.12); opacity: 1; }
+    @keyframes mesh-pulse {
+      0%, 100% { opacity: 0.8; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-2px); }
     }
-    .node-1 { transform-box: fill-box; transform-origin: center; animation: mesh-ping 2.1s ease-in-out infinite; }
-    .node-2 { transform-box: fill-box; transform-origin: center; animation: mesh-ping 2.1s ease-in-out infinite 0.7s; }
-    .node-3 { transform-box: fill-box; transform-origin: center; animation: mesh-ping 2.1s ease-in-out infinite 1.4s; }
-    @keyframes wip-pulse {
-      0%, 100% { opacity: 0.90; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.03); }
+    .node-1 { animation: mesh-pulse 2.1s ease-in-out infinite; }
+    .node-2 { animation: mesh-pulse 2.1s ease-in-out infinite 0.7s; }
+    .node-3 { animation: mesh-pulse 2.1s ease-in-out infinite 1.4s; }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: wip-pulse 2.2s ease-in-out infinite;
+      animation: badge-pulse 2.2s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .node-1, .node-2, .node-3, .badge-pill { animation: none !important; }

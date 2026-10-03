@@ -7,21 +7,25 @@
     }
     @keyframes float-l { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
     @keyframes float-r { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
-    .mark-left  { animation: float-l 4s ease-in-out infinite; }
-    .mark-right { animation: float-r 4s ease-in-out infinite; }
+    .mark-l { animation: float-l 4s ease-in-out infinite; }
+    .mark-r { animation: float-r 4s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) {
-      .mark-left, .mark-right { animation: none !important; }
+      .mark-l, .mark-r { animation: none !important; }
     }
   </style>
-  <g class="mark-left" transform="translate(14 12.6) scale(0.8)" style="isolation:isolate">
-    <circle class="m" cx="20" cy="28" r="14" fill="#FFB627"/>
-    <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#F0542D"/>
-    <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#E64980"/>
+  <g transform="translate(14 12.6) scale(0.8)" style="isolation:isolate">
+    <g class="mark-l">
+      <circle class="m" cx="20" cy="28" r="14" fill="#FFB627"/>
+      <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#F0542D"/>
+      <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#E64980"/>
+    </g>
   </g>
-  <g class="mark-right" transform="translate(571 12.6) scale(0.8)" style="isolation:isolate">
-    <circle class="m" cx="20" cy="28" r="14" fill="#E64980"/>
-    <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#FFB627"/>
-    <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#F0542D"/>
+  <g transform="translate(571 12.6) scale(0.8)" style="isolation:isolate">
+    <g class="mark-r">
+      <circle class="m" cx="20" cy="28" r="14" fill="#E64980"/>
+      <rect class="m" x="24" y="14" width="28" height="28" rx="9" fill="#FFB627"/>
+      <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#F0542D"/>
+    </g>
   </g>
   <text class="t" x="320" y="42" text-anchor="middle">soup is just the best driving force :3</text>
 </svg>

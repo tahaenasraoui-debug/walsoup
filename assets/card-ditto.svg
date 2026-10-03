@@ -14,14 +14,12 @@
     .bar-1 { animation: eq-1 2.2s ease-in-out infinite; }
     .bar-2 { animation: eq-2 1.8s ease-in-out infinite; }
     .bar-3 { animation: eq-3 2.5s ease-in-out infinite; }
-    @keyframes badge-glow {
-      0%, 100% { opacity: 0.94; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.025); }
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 0.86; }
+      50% { opacity: 1; }
     }
     .badge-pill {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: badge-glow 3s ease-in-out infinite;
+      animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
       .bar-1, .bar-2, .bar-3, .badge-pill { animation: none !important; }
