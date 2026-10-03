@@ -10,6 +10,12 @@ This repository contains the source code, visual design, copy, and personal bran
    You may NOT deploy, host, redistribute, or publish this website or substantial portions of its design, styling, copy, photos, or audio assets "as is" or as a turnkey template. 
 
 3. Personal Identity & Assets:
-   All personal branding, domain name references, photography, custom artwork, audio tracks, and written copy are strictly proprietary and may not be used without prior written permission.
+   All personal branding, domain name references, photography, custom artwork, and written copy are strictly proprietary and may not be used without prior written permission.
+
+### Third-Party Music & Audio Notices:
+The background music tracks included in this repository (in `audio/tracks/`) are composed by Toby Fox from DELTARUNE and UNDERTALE.
+- Music & Compositions: Copyright © Toby Fox. DELTARUNE and UNDERTALE are trademarks and copyrights of Toby Fox.
+- Music Publishing & Mechanical Rights: Administered and published via Materia Collective LLC / Materia Music Inc.
+- All rights to the music and associated intellectual property remain the sole property of Toby Fox and Materia Collective. They are included here strictly for ambient non-commercial presentation on souphater.page.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
