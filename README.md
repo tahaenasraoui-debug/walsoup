@@ -2,69 +2,56 @@
 
 # Walid Elonk (`@walsoup`)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/soup-enthusiast-d57624?style=flat-square" alt="soup enthusiast" />
-  <img src="https://img.shields.io/badge/cats-100%25-d57624?style=flat-square" alt="cats" />
-  <img src="https://img.shields.io/badge/offline--first-builder-d57624?style=flat-square" alt="offline first" />
-  <img src="https://img.shields.io/badge/FSR-student-1f2937?style=flat-square" alt="student" />
-</p>
+cs student at fsr. i like soup, cats, and building offline-first stuff right up until something needs an api.
 
-> *"every elegant solution eventually creates a new, much worse problem."*  
-> *(also: when life throws a fish at you... tell it to say sorry)*
+[souphater.page](https://souphater.page) · [walidelonk@gmail.com](mailto:walidelonk@gmail.com)
 
-<p align="center">
-  <a href="https://souphater.page"><b>Website</b></a> •
-  <a href="mailto:walidelonk@gmail.com"><b>Email</b></a>
-</p>
+> *"every elegant solution eventually creates a new, much worse problem."*
 
 </div>
 
 ---
 
-### 〰️ About Me
+### about me
 
-Computer science student at FSR, systems tinkerer, and builder. I like taking photos of cats, building weird software to kill time, and writing offline-first tools that don't depend on someone else's cloud.
+i build weird software to kill time and occasionally it turns into something useful.
 
-**Things I vibe with**:
-- 🍲 Soup
-- 🐱 Cats (taking photos of them and collecting random cat facts)
-- 📡 Offline Bluetooth mesh networks & local protocols
-- 🎛️ Digital signal processing & audio synthesis
-- 🎨 Drawing & doodling
+outside of code: i take photos of cats, collect random cat facts, and doodle when i'm bored. also soup. mostly soup. (yes my domain is souphater.page, no i don't hate soup, it's just an old handle joke).
 
 ---
 
-### 🛠️ What I'm Building
+### what i'm building
 
-| Project | What It Is | Status / Tech |
+**[ditto](https://github.com/walsoup/ditto)** records a voice note on android and pastes it straight into whatever chat you're in. fully finished. typing on glass sucks.
+
+**[gemwallet](https://github.com/walsoup/gemwallet)** is a private finance tracker with an encrypted local db and zero telemetry. works completely offline, with an api option if you actually want to sync. mostly done, just fixing visual bugs.
+
+**[fichegen (profstudio)](https://github.com/walsoup/Fichegen)** is an ai lesson-prep tool for teachers. the repo opens on the native macos app, with a native [windows](https://github.com/walsoup/Fichegen/tree/windows-native) build on its own branch. the original python script is still on `main`.
+
+#### smaller stuff
+
+| project | what it is | stack |
 | :--- | :--- | :--- |
-| **[BlueNet (bitnet)](https://github.com/walsoup/bitnet)** | Android BLE mesh network & Bluetooth internet sharing via L2CAP VPN tunnels without root. | `Kotlin` `BLE` `L2CAP` `WIP 🚧` |
-| **[GemWallet](https://github.com/walsoup/gemwallet)** | Private, offline-first personal finance tracker with local encrypted SQLite and zero telemetry. | `Android` `Jetpack Compose` `WIP 🚧` |
-| **[Corda Protocol](https://github.com/walsoup/Corda)** | Vocal-tract-centric audio synthesis engine and sound design workstation. | `Python` `DSP` `Audio Synthesis` |
-| **[Agent Base](https://github.com/walsoup/agent-base)** | Extensible autonomous AI agent loop with SSE streaming, reasoning logs, and human-in-the-loop approval. | `Node.js` `Express` `Zod` |
-| **[Tether Compass](https://github.com/walsoup/tether-compass)** | Minimal web compass for long-distance couples that lights up when you're directly facing each other across the earth. | `Web Sensors` `Geolocation` `Haversine` |
-| **[SheetGen](https://github.com/walsoup/sheetgen)** | AI music sheet generator converting natural language ideas into ABC notation and multi-page PDFs. | `Python` `Streamlit` `ABCJS` |
-| **[Direct Moutamadris](https://github.com/walsoup/DirectMoutamadris)** | Fast, clean client to query Moroccan student grades directly without the heavy portal wait. | `TypeScript` `Web API` |
+| **[bluenet (bitnet)](https://github.com/walsoup/bitnet)** | android ble mesh network, plus sharing internet over bluetooth with no root. | `kotlin` `ble` `l2cap` |
+| **[agent base](https://github.com/walsoup/agent-base)** | small autonomous agent loop with streaming, reasoning logs and human approval. | `node.js` `express` `zod` |
+| **[tether compass](https://github.com/walsoup/tether-compass)** | web compass for long-distance couples that lights up when you're facing each other across the planet. | `web sensors` `haversine` |
+| **[direct moutamadris](https://github.com/walsoup/DirectMoutamadris)** | check your moroccan grades without waiting on the heavy portal. | `typescript` |
 
 ---
 
-### 🧰 Toolkit & Ecosystem
+### what i write in
 
-```
-Languages    :: Kotlin, Python, TypeScript, JavaScript, Rust, C/C++
-Platforms    :: Android (Compose, NDK), Linux, Node.js
-Focus        :: Offline Protocols, Audio DSP, Agentic Tooling, Mobile UX
-```
-
-<details>
-<summary><b>🥔 souphater.page status</b></summary>
-
-- [x] Need to make the website not lag on most devices
-- [x] Add spice to the background (those background squiggles I was too lazy to add)
-- [x] Complete the website (not important, but done anyway :3)
-
-</details>
+| | |
+| :--- | :--- |
+| **languages** | kotlin, python, typescript, javascript, c++, rust |
+| **environments** | android, windows, macos, linux, node.js |
+| **focus** | offline protocols, audio dsp, agentic tooling, mobile ux |
 
 <div align="center">
-  <sub>Built with warm tea and potato soup 🥔 • <a href="https://souphater.page">souphater.page</a></sub>
+
+<img height="150" src="https://github-readme-stats.vercel.app/api?username=walsoup&show_icons=true&hide_border=true&title_color=d57624&icon_color=d57624&text_color=8b949e&bg_color=00000000" alt="GitHub stats" />
+<img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=walsoup&layout=compact&hide_border=true&title_color=d57624&text_color=8b949e&bg_color=00000000" alt="Top languages" />
+
+<sub>soup is just the best driving force :3</sub>
+
 </div>
