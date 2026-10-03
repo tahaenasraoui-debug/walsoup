@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="64" viewBox="0 0 640 64" role="img" aria-label="tether compass card">
+  <style>
+    .bg { fill: #FFF3E0; }
+    .t  { font: 700 22px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .w  { font: 600 17px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .m  { mix-blend-mode: multiply; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2A2119; }
+      .t  { fill: #fff4e6; }
+    }
+    @keyframes cp-sway {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+    @keyframes cp-beacon {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    .cp-arc1, .cp-arc2 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: cp-sway 4s ease-in-out infinite alternate;
+    }
+    .cp-dot {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: cp-beacon 2.2s ease-in-out infinite;
+    }
+    @keyframes badge-glow {
+      0%, 100% { opacity: 0.94; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.025); }
+    }
+    .badge-pill {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: badge-glow 3s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cp-arc1, .cp-arc2, .cp-dot, .badge-pill { animation: none !important; }
+    }
+  </style>
+  <rect class="bg" width="640" height="64" rx="16"/>
+  <g transform="translate(20 10.88) scale(0.66)" style="isolation:isolate">
+    <path class="m cp-arc1" d="M30 10 A22 22 0 0 0 30 54 Z" fill="#FFB627"/>
+    <path class="m cp-arc2" d="M22 10 A22 22 0 0 1 22 54 Z" transform="translate(14 0)" fill="#F0542D"/>
+    <circle class="m cp-dot" cx="32" cy="32" r="9" fill="#E64980"/>
+  </g>
+  <text class="t" x="78" y="39.7">tether compass</text>
+  <g class="badge-pill">
+    <rect x="523" y="17.0" width="97" height="30" rx="15.0" fill="#2DA44E"/>
+    <text class="w" x="571.5" y="38.0" text-anchor="middle">shipped</text>
+  </g>
+</svg>

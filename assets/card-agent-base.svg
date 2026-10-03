@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="64" viewBox="0 0 640 64" role="img" aria-label="agent base card">
+  <style>
+    .bg { fill: #FFF3E0; }
+    .t  { font: 700 22px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .w  { font: 600 17px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .m  { mix-blend-mode: multiply; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2A2119; }
+      .t  { fill: #fff4e6; }
+    }
+    @keyframes ag-pulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2.5px); }
+    }
+    .ag-head { animation: ag-pulse 2.4s ease-in-out infinite; }
+    .ag-base { animation: ag-pulse 3s ease-in-out infinite 0.5s; }
+    @keyframes wip-pulse {
+      0%, 100% { opacity: 0.90; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    .badge-pill {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: wip-pulse 2.2s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ag-head, .ag-base, .badge-pill { animation: none !important; }
+    }
+  </style>
+  <rect class="bg" width="640" height="64" rx="16"/>
+  <g transform="translate(20 10.88) scale(0.66)" style="isolation:isolate">
+    <circle class="m ag-base" cx="24" cy="34" r="22" fill="#FFB627"/>
+    <path class="m ag-body" d="M24 56 V16 A40 40 0 0 1 64 56 Z" fill="#F0542D"/>
+    <circle class="m ag-head" cx="48" cy="20" r="12" fill="#E64980"/>
+  </g>
+  <text class="t" x="78" y="39.7">agent base</text>
+  <g class="badge-pill">
+    <rect x="563" y="17.0" width="57" height="30" rx="15.0" fill="#E07B00"/>
+    <text class="w" x="591.5" y="38.0" text-anchor="middle">wip</text>
+  </g>
+</svg>

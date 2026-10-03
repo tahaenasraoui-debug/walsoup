@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="264" height="44" viewBox="0 0 264 44" role="img" aria-label="cs student · fsr">
+  <style>
+    .w { font: 600 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .m { mix-blend-mode: multiply; }
+    @keyframes pill-diamond {
+      0%, 100% { transform: rotate(45deg) scale(1); }
+      50% { transform: rotate(45deg) scale(1.06); }
+    }
+    .icon {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: pill-diamond 3.2s ease-in-out infinite alternate;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .icon { animation: none !important; }
+    }
+  </style>
+  <g style="isolation:isolate">
+    <rect class="m icon" x="6.5" y="6.5" width="31" height="31" rx="6.5" transform="rotate(45 22 22)" fill="#FFB627"/>
+    <rect class="m" x="16" y="0" width="248" height="44" rx="22" fill="#E07B00"/>
+  </g>
+  <text class="w" x="60" y="29">cs student · fsr</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="64" viewBox="0 0 640 64" role="img" aria-label="direct moutamadris card">
+  <style>
+    .bg { fill: #FFF3E0; }
+    .t  { font: 700 22px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .w  { font: 600 17px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .m  { mix-blend-mode: multiply; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2A2119; }
+      .t  { fill: #fff4e6; }
+    }
+    @keyframes dm-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .dm-1 { animation: dm-float 3.4s ease-in-out infinite; }
+    .dm-2 { animation: dm-float 3.4s ease-in-out infinite 0.6s; }
+    .dm-3 { animation: dm-float 3.4s ease-in-out infinite 1.2s; }
+    @keyframes badge-glow {
+      0%, 100% { opacity: 0.94; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.025); }
+    }
+    .badge-pill {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: badge-glow 3s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .dm-1, .dm-2, .dm-3, .badge-pill { animation: none !important; }
+    }
+  </style>
+  <rect class="bg" width="640" height="64" rx="16"/>
+  <g transform="translate(20 10.88) scale(0.66)" style="isolation:isolate">
+    <rect class="m dm-1" x="4" y="10" width="40" height="40" rx="12" fill="#FFB627"/>
+    <circle class="m dm-2" cx="42" cy="40" r="18" fill="#F0542D"/>
+    <circle class="m dm-3" cx="50" cy="18" r="10" fill="#E64980"/>
+  </g>
+  <text class="t" x="78" y="39.7">direct moutamadris</text>
+  <g class="badge-pill">
+    <rect x="523" y="17.0" width="97" height="30" rx="15.0" fill="#2DA44E"/>
+    <text class="w" x="571.5" y="38.0" text-anchor="middle">shipped</text>
+  </g>
+</svg>

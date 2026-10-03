@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="84" viewBox="0 0 640 84" role="img" aria-label="ditto card">
+  <style>
+    .bg { fill: #FFF3E0; }
+    .t  { font: 700 26px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .w  { font: 600 17px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .m  { mix-blend-mode: multiply; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2A2119; }
+      .t  { fill: #fff4e6; }
+    }
+    @keyframes eq-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3.5px); } }
+    @keyframes eq-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
+    @keyframes eq-3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    .bar-1 { animation: eq-1 2.2s ease-in-out infinite; }
+    .bar-2 { animation: eq-2 1.8s ease-in-out infinite; }
+    .bar-3 { animation: eq-3 2.5s ease-in-out infinite; }
+    @keyframes badge-glow {
+      0%, 100% { opacity: 0.94; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.025); }
+    }
+    .badge-pill {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: badge-glow 3s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bar-1, .bar-2, .bar-3, .badge-pill { animation: none !important; }
+    }
+  </style>
+  <rect class="bg" width="640" height="84" rx="18"/>
+  <g transform="translate(22 14.0) scale(0.875)" style="isolation:isolate">
+    <rect class="m bar-1" x="2" y="18" width="22" height="28" rx="11" fill="#FFB627"/>
+    <rect class="m bar-2" x="18" y="6" width="22" height="52" rx="11" fill="#F0542D"/>
+    <rect class="m bar-3" x="34" y="14" width="22" height="36" rx="11" fill="#E64980"/>
+  </g>
+  <text class="t" x="96" y="51.1">ditto</text>
+  <g class="badge-pill">
+    <rect x="511" y="26.0" width="107" height="32" rx="16.0" fill="#2DA44E"/>
+    <text class="w" x="564.5" y="48.0" text-anchor="middle">finished</text>
+  </g>
+</svg>

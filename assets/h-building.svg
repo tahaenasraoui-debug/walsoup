@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="56" viewBox="0 0 640 56" role="img" aria-label="what i&#8217;m building">
+  <style>
+    .t { font: 700 30px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .m { mix-blend-mode: multiply; }
+    @media (prefers-color-scheme: dark) {
+      .t { fill: #fff4e6; }
+    }
+    @keyframes float-c1 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2.5px); }
+    }
+    @keyframes float-c2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(2px); }
+    }
+    @keyframes float-c3 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-1.5px); }
+    }
+    .shape-1 { animation: float-c1 3.6s ease-in-out infinite alternate; }
+    .shape-2 { animation: float-c2 3.6s ease-in-out infinite alternate -1.2s; }
+    .shape-3 { animation: float-c3 3.6s ease-in-out infinite alternate -2.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .shape-1, .shape-2, .shape-3 { animation: none !important; }
+    }
+  </style>
+  <g style="isolation:isolate">
+    <circle class="m shape-1" cx="20" cy="28" r="14" fill="#F0542D"/>
+    <rect class="m shape-2" x="24" y="14" width="28" height="28" rx="9" fill="#E64980"/>
+    <path class="m shape-3" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#FFB627"/>
+  </g>
+  <text class="t" x="92" y="39">what i&#8217;m building</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="310" height="44" viewBox="0 0 310 44" role="img" aria-label="walidelonk@gmail.com">
+  <style>
+    .w { font: 600 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .m { mix-blend-mode: multiply; }
+    @keyframes pill-arrow {
+      0%, 100% { transform: scale(1.294) translateX(0); }
+      50% { transform: scale(1.294) translateX(1px); }
+    }
+    .icon {
+      animation: pill-arrow 2.8s ease-in-out infinite alternate;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .icon { animation: none !important; }
+    }
+  </style>
+  <g style="isolation:isolate">
+    <path class="m icon" transform="scale(1.294)" d="M5 6 L30 17 L5 28 Z" fill="#FFB627" stroke="#FFB627" stroke-width="6" stroke-linejoin="round"/>
+    <rect class="m" x="16" y="0" width="294" height="44" rx="22" fill="#E64980"/>
+  </g>
+  <text class="w" x="60" y="29">walidelonk@gmail.com</text>
+</svg>
