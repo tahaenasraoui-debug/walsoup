@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="130" viewBox="0 0 640 130" role="img" aria-label="Deltarune Susie Dialogue">
+  <style>
+    .bg { fill: #000000; }
+    .box-outer { fill: none; stroke: #FFFFFF; stroke-width: 2.5; }
+    .box-inner { fill: none; stroke: #FFFFFF; stroke-width: 1.5; }
+    .pixelated { image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
+    .portrait { image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
+    .t {
+      font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+      font-size: 15px;
+      font-weight: 500;
+      fill: #FFFFFF;
+      letter-spacing: -0.2px;
+    }
+    .star { fill: #FFB627; font-weight: 700; }
+    .prompt-arrow { fill: #FFB627; animation: blink-arrow 1.2s steps(1) infinite; }
+    @keyframes susie-talk {
+      0%, 6.6%, 13.3%, 20%, 26.6%, 33.3%, 40%, 100% { opacity: 0; }
+      3.3%, 10%, 16.7%, 23.3%, 30%, 36.7% { opacity: 1; }
+    }
+    .mouth-open {
+      animation: susie-talk 6s steps(1) infinite;
+    }
+    @keyframes blink-arrow {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes arrow-blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #000000; }
+      .box-outer { stroke: #FFFFFF; }
+      .box-inner { stroke: #FFFFFF; }
+      .t { fill: #FFFFFF; }
+      .star { fill: #FFE800; }
+      .prompt-arrow { fill: #FFE800; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mouth-open, .prompt-arrow {
+        animation: none !important;
+      }
+      .mouth-open {
+        opacity: 0 !important;
+      }
+      .prompt-arrow {
+        opacity: 1 !important;
+      }
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="640" height="130" rx="4"/>
+  <rect class="box-outer" x="5" y="5" width="630" height="120" rx="3"/>
+  <rect class="box-inner" x="10" y="10" width="620" height="110" rx="2"/>
+  <g id="susie-portrait">
+    <image class="portrait pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAzCAYAAAADxoFxAAACKUlEQVRoQ8WOAW7DMAwD9/9Pb01rNgxNybLjdgccFlOUup8Hvzsd4XYWtOHQCNdlGTcvasNQ4GYzAjcraMNO4GZ3XLxpw4uLh8su3Lfh24WDS07+jg2fTh66LXAz0YbV5e0ybt604WjpKwIz64Ko+FWBmz3sw6T8URXXafbhYOGjMm7evAaD8tcEbvbwGiTFfxFIfnm4wr8LKOsLmu125TdAe/dDzXaq9/XtVB5ZX9Bsl3obcBYpvXS4Tb3LcB4J2rsfarZDvqtwL5O64WCbwM1mpBvpsCzg7wM3cx0nz0B7X4uHNEyt9Bg3z8QO02ZxOVM7+kamuFz3WCDffUkzJ/eAzh3c4Z7mMJhdg6DUqWSzKnwDdzRrno+k1KlE+Sz8G4nnY2Lp2c2odCL0t4zno7jwNmI0r8C/YzwfhfJFx2g+A98Sz8egaFWy2Qp8j3x9JIVUZTRfQW8+PI9TOKXiOoermFvnQQqnVVzuegdRzuBe8zxO4ZJMlDk4zzrkqyThsoxmrqNEc+w27//Tus/wW7szYKfZ/+iswGUHeFe6DO+J4aAsM8pB9H3AXXyL6bCkEs01jwRu9rTN/bCoo9qLcPtvh4WCGa5/2x2HK7i9keHe6kG2gturaHfvHIQV3F5Fu3vnIKzg9ioGu+cAf2et4PZGJnvXH+WhvneoN/U9ypuvD5TwF98HeKvZjEUPuJznB+gE9iHj3trVTAX8feDmRW0Y6nC9z/nz+wcFNmlqkctfTAAAAABJRU5ErkJggg==" x="20" y="14" width="90" height="102"/>
+    <image class="portrait pixelated mouth-open" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAzCAYAAAADxoFxAAACI0lEQVRoQ8WOAZLDIAwD7/+fvmta1ChCNobQ3s7sNMgy9OfB705HuJ0FbTg0wnVZxs2L2jAUuNmMwM0K2rATuNkdF++04cXFi8su3G/DtwsXLjn5jg2fTl50W+Bmog2ry9tl3Lxpw9HSVwRm1gVR8asCN3vYh0n5oyqu0+zDwcJHZdy8eQ0G5a8J3OzhNUiK/yKQ/HJwhX8XUNYXNNvtyhugnfuhZjvV+/XsVB5ZX9Bsl3o34CxSeulwm3ovw3kkaOd+qNkO+V6Fe5nUDQfbBG42I92RDssC/j5wM9dx8gy087V4SMNU7SmauR4yJ+ZMm8XlTO3oGVkF3WOBfPclzZzcAzp3cId7msNgdg2CUqeSzarwHbhHs+Z5SEqdSpTPwm8knoeJpWc3o9KJ0LeM56G48FZx2Sr6lngeCuWLn8a92TwPg6LVEeUr6HvN10dSSP0G5t3zcQqnjKh0KvA9zfNSCqdVKh2QzYDcdV5I4ZKMy7UDqh3yVZJwWUYz11GiOXab9/+07jN81u4M2Gn2j84KXHaAc6XL8J4YDsoyoxxE3wfcxbeYDksq0VzzSOBmT9vcD4s6qr0It/92WCiY4fq33XFxBbc3MtxbvZCt4PYq2t07F8IKbq+i3b1zIazg9ioGu+cAv7NWcHsjk73rozzU8w71Tj2P8ubrAyX84vsAZzWbsegBl/P8AJ3APmTcWbuaqYC/D9y8qA1DHa73OX9+/wDi9p805eESMQAAAABJRU5ErkJggg==" x="20" y="14" width="90" height="102"/>
+  </g>
+  <g id="dialogue-text">
+    <text class="t" x="126" y="43">
+      <tspan class="star">* </tspan>Hey! You look like someone who&#8217;d spend 40 hours
+    </text>
+    <text class="t" x="126" y="69">
+      <tspan fill="transparent">* </tspan>building an offline mesh instead of studying.
+    </text>
+    <text class="t" x="126" y="95">
+      <tspan class="star">* </tspan>...Also, the soup thing is real. Don&#8217;t ask.
+    </text>
+  </g>
+  <polygon class="prompt-arrow" points="608,102 618,102 613,109"/>
+</svg>

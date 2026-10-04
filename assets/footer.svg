@@ -2,15 +2,18 @@
   <style>
     .t { font: 700 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; }
     .m { mix-blend-mode: multiply; }
+    .pixelated { image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
     @media (prefers-color-scheme: dark) {
       .t { fill: #fff4e6; }
     }
     @keyframes float-l { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
     @keyframes float-r { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
+    @keyframes plush-breathe { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
     .mark-l { animation: float-l 4s ease-in-out infinite; }
     .mark-r { animation: float-r 4s ease-in-out infinite; }
+    .plush-cameo, .plush-bob { animation: plush-breathe 3.5s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) {
-      .mark-l, .mark-r { animation: none !important; }
+      .mark-l, .mark-r, .plush-cameo, .plush-bob { animation: none !important; }
     }
   </style>
   <g transform="translate(14 12.6) scale(0.8)" style="isolation:isolate">
@@ -27,5 +30,11 @@
       <path class="m" d="M46 42 A14 14 0 0 1 74 42 Z" fill="#F0542D"/>
     </g>
   </g>
-  <text class="t" x="320" y="42" text-anchor="middle">soup is just the best driving force :3</text>
+  <text class="t" x="300" y="42" text-anchor="middle">soup is just the best driving force :3</text>
+  <!-- Susie Plush Cameo: 2x pixel scale (19x22 -> 38x44) beside soup quote -->
+  <g transform="translate(508 13) scale(2)">
+    <g class="plush-cameo plush-bob pixelated">
+      <image class="pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAWCAYAAAAinad/AAAA80lEQVQ4T5WRwQ1CMQxD/xZwYw+W4c4aXBgCiRmYhCOrIC7wHb6Dk6ZQLD3RJrH7W6YBPTv8JTMdV/sS9jGYpU2jCsgss43K4RHgfUd8FL5G1+B+uBnn9TXUweJtZE0YYMSeIbrPYQA9BGSFAKL1kbBg0HVFERTDKhPRfn439CxB5IM09cDszzBQmQkO4hxDUiBweRFGhXU1c621mSA3ZpIp7HOYD/FaWO82J69XaPiMywMAr8YwvaoettCoGnJyGGsy38gN5HHZ2i+MhL10eFduAOldKoYU/i2CvXUHRYPT+bqfqkw9vgsPTuatm4p6oWl6ATiDM3FLssKXAAAAAElFTkSuQmCC" width="19" height="22"/>
+    </g>
+  </g>
 </svg>

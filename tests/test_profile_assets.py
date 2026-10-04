@@ -3,6 +3,7 @@
 test_profile_assets.py - Comprehensive verification suite for walsoup GitHub profile assets
 """
 
+import base64
 import os
 import re
 import unittest
@@ -33,6 +34,7 @@ EXPECTED_ASSETS = [
     "stack.svg",
     "footer.svg",
     "header.svg",
+    "dialogue-susie.svg",
 ]
 
 class TestProfileAssets(unittest.TestCase):
@@ -144,6 +146,89 @@ class TestProfileAssets(unittest.TestCase):
         smaller_section = readme.split("h-smaller.svg")[1].split("h-stack.svg")[0]
         self.assertIn("card-tether-compass.svg", smaller_section, "tether-compass should be in smaller section")
         self.assertIn("card-direct-moutamadris.svg", smaller_section, "direct-moutamadris should be in smaller section")
+
+    def test_camo_proxy_embedded_images(self):
+        """Verify embedded sprites use valid data URIs and zero external network fetches."""
+        data_uri_pattern = re.compile(r"^data:image/png;base64,([A-Za-z0-9+/=]+)$")
+        image_count = 0
+        for asset in EXPECTED_ASSETS:
+            path = os.path.join(ASSETS_DIR, asset)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            root = ET.fromstring(content)
+            for elem in root.iter():
+                if elem.tag.endswith("image"):
+                    image_count += 1
+                    href = elem.attrib.get("href") or elem.attrib.get("{http://www.w3.org/1999/xlink}href")
+                    self.assertIsNotNone(href, f"{asset}: <image> tag missing href")
+                    self.assertFalse(href.startswith("http://") or href.startswith("https://"),
+                                    f"{asset}: <image> uses external network URL: {href}")
+                    match = data_uri_pattern.match(href)
+                    self.assertTrue(match, f"{asset}: <image> href is not a valid base64 PNG data URI")
+                    payload = match.group(1)
+                    decoded = base64.b64decode(payload)
+                    self.assertTrue(decoded.startswith(b"\x89PNG\r\n\x1a\n"),
+                                    f"{asset}: Decoded image does not start with PNG header")
+        self.assertGreater(image_count, 0, "No embedded images found across assets")
+
+    def test_pixelated_rendering_for_sprites(self):
+        """Verify .pixelated CSS class with crisp-edges / pixelated image-rendering."""
+        for asset in EXPECTED_ASSETS:
+            path = os.path.join(ASSETS_DIR, asset)
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+            if "<image" in content:
+                self.assertIn("image-rendering: pixelated", content,
+                              f"{asset}: contains <image> but lacks 'image-rendering: pixelated'")
+                self.assertIn(".pixelated", content,
+                              f"{asset}: contains <image> but lacks '.pixelated' CSS rule")
+                root = ET.fromstring(content)
+                for elem in root.iter():
+                    if elem.tag.endswith("image"):
+                        cls = elem.attrib.get("class", "")
+                        self.assertIn("pixelated", cls, f"{asset}: <image> missing 'pixelated' class")
+
+    def test_header_susie_mascot(self):
+        """Verify Susie battle idle mascot in header.svg with collision-free bobbing."""
+        path = os.path.join(ASSETS_DIR, "header.svg")
+        self.assertTrue(os.path.isfile(path), "header.svg missing")
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("<image", content, "header.svg missing sprite <image> element")
+        self.assertIn("data:image/png;base64,", content, "header.svg missing embedded base64 sprite")
+        self.assertIn("@keyframes susie-bob", content, "header.svg missing @keyframes susie-bob animation")
+        self.assertIn(".susie-idle", content, "header.svg missing .susie-idle class")
+        match = re.search(r'<[^>]+class="[^"]*\bsusie-idle\b[^"]*"[^>]+transform="[^"]+"', content)
+        self.assertIsNone(match, "header.svg has conflicting transform on .susie-idle element")
+
+    def test_footer_susie_cameo(self):
+        """Verify Susie plush cameo in footer.svg beside soup quote."""
+        path = os.path.join(ASSETS_DIR, "footer.svg")
+        self.assertTrue(os.path.isfile(path), "footer.svg missing")
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        self.assertIn("<image", content, "footer.svg missing sprite <image> element")
+        self.assertIn("data:image/png;base64,", content, "footer.svg missing embedded plush sprite")
+        self.assertIn("soup is just the best driving force :3", content, "footer.svg missing soup quote")
+        self.assertIn(".plush-bob", content, "footer.svg missing .plush-bob idle animation")
+
+    def test_dialogue_susie_asset(self):
+        """Verify dialogue-susie.svg dimensions, double border, Susie portrait, prompt arrow, and accessibility."""
+        path = os.path.join(ASSETS_DIR, "dialogue-susie.svg")
+        self.assertTrue(os.path.isfile(path), "dialogue-susie.svg missing")
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        root = ET.fromstring(content)
+        self.assertEqual(root.attrib.get("width"), "640", "dialogue-susie.svg width should be 640")
+        self.assertEqual(root.attrib.get("height"), "130", "dialogue-susie.svg height should be 130")
+        self.assertEqual(root.attrib.get("viewBox"), "0 0 640 130", "dialogue-susie.svg viewBox should be '0 0 640 130'")
+        rects = [elem for elem in root.iter() if elem.tag.endswith("rect")]
+        self.assertGreaterEqual(len(rects), 2, "dialogue-susie.svg should have at least 2 rects for double border")
+        images = [elem for elem in root.iter() if elem.tag.endswith("image")]
+        self.assertGreaterEqual(len(images), 1, "dialogue-susie.svg missing portrait image")
+        self.assertIn("arrow-blink", content, "dialogue-susie.svg missing arrow-blink animation")
+        self.assertIn("@media (prefers-reduced-motion: reduce)", content, "dialogue-susie.svg missing reduced motion support")
+        self.assertIn("@media (prefers-color-scheme: dark)", content, "dialogue-susie.svg missing dark mode support")
 
 if __name__ == "__main__":
     unittest.main()

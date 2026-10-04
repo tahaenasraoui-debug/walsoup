@@ -1,12 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="64" viewBox="0 0 640 64" role="img" aria-label="tether compass card">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="60" viewBox="0 0 640 60" role="img" aria-label="tether compass card">
   <style>
     .bg { fill: #FFF3E0; }
-    .t  { font: 700 22px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
-    .w  { font: 600 17px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .t  { font: 700 20px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .sub { font: 500 11.5px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #7a6a5c; }
     .m  { mix-blend-mode: multiply; }
+    .card-border { stroke-opacity: 0.35; }
+    .rpg-box { fill: #24190F; }
+    .rpg-item { font: 800 10.5px ui-monospace, "Cascadia Code", Menlo, monospace; fill: #FFB627; letter-spacing: 0.5px; }
+    .rpg-ship { font: 700 11px ui-monospace, "Cascadia Code", Menlo, monospace; fill: #2DA44E; letter-spacing: 0.5px; }
     @media (prefers-color-scheme: dark) {
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
+      .sub { fill: #b8a898; }
+      .card-border { stroke-opacity: 0.7; }
+      .rpg-box { fill: #140E0A; }
     }
     @keyframes arc-sway-1 {
       0%, 100% { transform: translateY(0); }
@@ -27,22 +34,27 @@
       0%, 100% { opacity: 0.86; }
       50% { opacity: 1; }
     }
-    .badge-pill {
+    .badge-anim {
       animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
-      .cp-arc1, .cp-arc2, .cp-dot, .badge-pill { animation: none !important; }
+      .cp-arc1, .cp-arc2, .cp-dot, .badge-anim { animation: none !important; }
     }
   </style>
-  <rect class="bg" width="640" height="64" rx="16"/>
-  <g transform="translate(20 10.88) scale(0.66)" style="isolation:isolate">
+  <rect class="bg" width="640" height="60" rx="14"/>
+  <rect class="card-border" x="1" y="1" width="638" height="58" rx="13" fill="none" stroke="#2DA44E" stroke-width="1.2"/>
+  <g transform="translate(18 10.0) scale(0.62)" style="isolation:isolate">
     <path class="m cp-arc1" d="M30 10 A22 22 0 0 0 30 54 Z" fill="#FFB627"/>
-    <g class="cp-arc2"><path class="m" d="M22 10 A22 22 0 0 1 22 54 Z" transform="translate(14 0)" fill="#F0542D"/></g>
+    <g transform="translate(14 0)"><path class="m cp-arc2" d="M22 10 A22 22 0 0 1 22 54 Z" fill="#F0542D"/></g>
     <circle class="m cp-dot" cx="32" cy="32" r="9" fill="#E64980"/>
   </g>
-  <text class="t" x="78" y="39.7">tether compass</text>
-  <g class="badge-pill">
-    <rect x="523" y="17.0" width="97" height="30" rx="15.0" fill="#2DA44E"/>
-    <text class="w" x="571.5" y="38.0" text-anchor="middle">shipped</text>
+  <text class="t" x="76" y="29">tether compass</text>
+  <text class="sub" x="77" y="45">long-distance couples web compass</text>
+  <g transform="translate(472, 16)">
+    <g class="badge-anim">
+      <rect class="rpg-box" width="148" height="28" rx="7" stroke="#2DA44E" stroke-width="1.2"/>
+      <text class="rpg-item" x="10" y="19">[KEY ITEM]</text>
+      <text class="rpg-ship" x="84" y="19">SHIPPED</text>
+    </g>
   </g>
 </svg>

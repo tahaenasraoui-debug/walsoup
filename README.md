@@ -20,6 +20,10 @@ i build weird software to kill time and occasionally it turns into something use
 
 outside of code: i take photos of cats, collect random cat facts, and doodle when i'm bored. also soup. I love making soup. *(yes, souphater.page. no, i don't hate soup.)*
 
+<br>
+
+<img alt="Susie: Hey! You look like someone who’d spend 40 hours building an offline mesh instead of studying." src="./assets/dialogue-susie.svg" width="640" height="130">
+
 ## <img alt="what i'm building" src="./assets/h-building.svg" width="640" height="56">
 
 <a href="https://github.com/walsoup/ditto"><img alt="ditto" src="./assets/card-ditto.svg" width="640" height="84"></a>
@@ -32,25 +36,25 @@ ai lesson-prep tool for teachers. repo opens on the native macos app, with a nat
 
 ## <img alt="what i'm working on" src="./assets/h-working-on.svg" width="640" height="56">
 
-<a href="https://github.com/walsoup/gemwallet"><img alt="gemwallet" src="./assets/card-gemwallet.svg" width="640" height="84"></a>
+<a href="https://github.com/walsoup/gemwallet"><img alt="gemwallet" src="./assets/card-gemwallet.svg" width="640" height="72"></a>
 
 private finance tracker, encrypted local db, zero telemetry. works completely offline, with an api option if you actually want to sync. mostly done — just fixing visual bugs.
 
-<a href="https://github.com/walsoup/bitnet"><img alt="bluenet (bitnet)" src="./assets/card-bitnet.svg" width="640" height="64"></a>
+<a href="https://github.com/walsoup/bitnet"><img alt="bluenet (bitnet)" src="./assets/card-bitnet.svg" width="640" height="72"></a>
 
 android ble mesh network, plus internet over bluetooth with no root.
 
-<a href="https://github.com/walsoup/agent-base"><img alt="agent base" src="./assets/card-agent-base.svg" width="640" height="64"></a>
+<a href="https://github.com/walsoup/agent-base"><img alt="agent base" src="./assets/card-agent-base.svg" width="640" height="72"></a>
 
 small autonomous agent loop with streaming, reasoning logs, human approval.
 
 ## <img alt="smaller stuff" src="./assets/h-smaller.svg" width="640" height="56">
 
-<a href="https://github.com/walsoup/tether-compass"><img alt="tether compass" src="./assets/card-tether-compass.svg" width="640" height="64"></a>
+<a href="https://github.com/walsoup/tether-compass"><img alt="tether compass" src="./assets/card-tether-compass.svg" width="640" height="60"></a>
 
 web compass for long-distance couples that lights up when you're facing each other.
 
-<a href="https://github.com/walsoup/DirectMoutamadris"><img alt="direct moutamadris" src="./assets/card-direct-moutamadris.svg" width="640" height="64"></a>
+<a href="https://github.com/walsoup/DirectMoutamadris"><img alt="direct moutamadris" src="./assets/card-direct-moutamadris.svg" width="640" height="60"></a>
 
 check your moroccan grades without waiting on the heavy portal.
 

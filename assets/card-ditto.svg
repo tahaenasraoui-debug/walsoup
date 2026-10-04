@@ -1,12 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="84" viewBox="0 0 640 84" role="img" aria-label="ditto card">
+  <defs>
+    <linearGradient id="flagship-border-ditto" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFB627" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#F0542D" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#E64980" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
   <style>
     .bg { fill: #FFF3E0; }
-    .t  { font: 700 26px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
-    .w  { font: 600 17px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+    .t  { font: 700 24px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #24190f; letter-spacing: -.5px; }
+    .sub { font: 500 12.5px ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #7a6a5c; }
     .m  { mix-blend-mode: multiply; }
+    .card-border { stroke-opacity: 0.45; }
+    .rpg-box { fill: #24190F; }
+    .rpg-lbl { font: 800 11px ui-monospace, "Cascadia Code", Menlo, monospace; fill: #FFB627; letter-spacing: 0.5px; }
+    .rpg-num { font: 700 11px ui-monospace, "Cascadia Code", Menlo, monospace; fill: #FFFFFF; }
+    .rpg-stat { font: 700 11.5px ui-monospace, "Cascadia Code", Menlo, monospace; fill: #2DA44E; letter-spacing: 0.5px; }
     @media (prefers-color-scheme: dark) {
       .bg { fill: #2A2119; }
       .t  { fill: #fff4e6; }
+      .sub { fill: #b8a898; }
+      .card-border { stroke-opacity: 0.75; }
+      .rpg-box { fill: #140E0A; }
     }
     @keyframes eq-1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3.5px); } }
     @keyframes eq-2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
@@ -15,25 +30,33 @@
     .bar-2 { animation: eq-2 1.8s ease-in-out infinite; }
     .bar-3 { animation: eq-3 2.5s ease-in-out infinite; }
     @keyframes badge-pulse {
-      0%, 100% { opacity: 0.86; }
+      0%, 100% { opacity: 0.88; }
       50% { opacity: 1; }
     }
-    .badge-pill {
+    .badge-anim {
       animation: badge-pulse 2.8s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
-      .bar-1, .bar-2, .bar-3, .badge-pill { animation: none !important; }
+      .bar-1, .bar-2, .bar-3, .badge-anim { animation: none !important; }
     }
   </style>
   <rect class="bg" width="640" height="84" rx="18"/>
+  <rect class="card-border" x="1.5" y="1.5" width="637" height="81" rx="16.5" fill="none" stroke="url(#flagship-border-ditto)" stroke-width="1.8"/>
   <g transform="translate(22 14.0) scale(0.875)" style="isolation:isolate">
     <rect class="m bar-1" x="2" y="18" width="22" height="28" rx="11" fill="#FFB627"/>
     <rect class="m bar-2" x="18" y="6" width="22" height="52" rx="11" fill="#F0542D"/>
     <rect class="m bar-3" x="34" y="14" width="22" height="36" rx="11" fill="#E64980"/>
   </g>
-  <text class="t" x="96" y="51.1">ditto</text>
-  <g class="badge-pill">
-    <rect x="511" y="26.0" width="107" height="32" rx="16.0" fill="#2DA44E"/>
-    <text class="w" x="564.5" y="48.0" text-anchor="middle">finished</text>
+  <text class="t" x="88" y="41">ditto</text>
+  <text class="sub" x="89" y="60">voice notes into chat · android</text>
+  <g transform="translate(442, 24)">
+    <g class="badge-anim">
+      <rect class="rpg-box" width="178" height="36" rx="9" stroke="#2DA44E" stroke-width="1.5"/>
+      <text class="rpg-lbl" x="12" y="23">HP</text>
+      <rect x="33" y="14" width="32" height="9" rx="2.5" fill="#1B2E1E" stroke="#2DA44E" stroke-width="1"/>
+      <rect x="35" y="16" width="28" height="5" rx="1.5" fill="#2DA44E"/>
+      <text class="rpg-num" x="71" y="23">100/100</text>
+      <text class="rpg-stat" x="120" y="23">DONE</text>
+    </g>
   </g>
 </svg>

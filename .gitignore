@@ -3,4 +3,5 @@ oldnode_modules/
 audio/tracks/backups_pre_remix/
 __pycache__/
 *.pyc
+.agents/
 
