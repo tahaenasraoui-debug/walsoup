@@ -16,9 +16,9 @@
 
 ## <img alt="about me" src="./assets/h-about.svg" width="640" height="56">
 
-i build weird software to kill time, and sometimes it turns into something useful.
+I build weird software to kill time, and sometimes it turns into something useful.
 
-away from the keyboard: cats (i photograph them and collect cat facts), doodling, and soup. i make a lot of soup. *(yes, souphater.page. no, i don't hate soup.)*
+away from the keyboard: cats (I photograph them and collect facts concerning them), doodling and soup. i make a lot of soup. *(yes, souphater.page. no, i don't hate soup.)*
 
 <br>
 
@@ -42,7 +42,7 @@ local llm inference tuned for intel arc igpus (vulkan, dp4a, speculative decodin
 
 <a href="https://github.com/walsoup/gemwallet"><img alt="gemwallet" src="./assets/card-gemwallet.svg" width="640" height="72"></a>
 
-a finance tracker for android. encrypted local db, no telemetry, works offline. there's an optional api if you want sync. almost done, i'm just chasing visual bugs.
+a finance tracker for android. encrypted local db, no telemetry, works offline. there's an optional api if you want sync. almost done, I'm just chasing visual bugs.
 
 <a href="https://github.com/walsoup/bitnet"><img alt="bluenet (bitnet)" src="./assets/card-bitnet.svg" width="640" height="72"></a>
 
